@@ -1,2 +1,3 @@
 // testing JS wiring
-console.log('wired');
+// console.log('wired');
+let numbers = document.querySelectorAll('.num');
