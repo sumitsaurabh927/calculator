@@ -21,6 +21,8 @@ let divide = document.querySelector('.divide');
 
 let equalTo = document.querySelector('.equal');
 
+let clear = document.querySelector('.clear');
+
 // functions for four basic numberical operations
 let addition = (operandOne, operandTwo) => Number(operandOne) + Number(operandTwo);
 let subtraction = (operandOne, operandTwo) => Number(operandOne) - Number(operandTwo);
@@ -66,13 +68,28 @@ add.addEventListener('click', () => {
         inputValue = `${inputValue}  ${add.innerText} `;
         screen.innerText = `${inputValue}`;
 })
+subtract.addEventListener('click', () => {
+        inputValue = `${inputValue}  ${subtract.innerText} `;
+        screen.innerText = `${inputValue}`;
+})
+multiply.addEventListener('click', () => {
+        inputValue = `${inputValue}  ${multiply.innerText} `;
+        screen.innerText = `${inputValue}`;
+})
+divide.addEventListener('click', () => {
+        inputValue = `${inputValue}  ${divide.innerText} `;
+        screen.innerText = `${inputValue}`;
+})
 
 equalTo.addEventListener('click', () => {
         let screenString = screen.innerText.split(' ');
-        console.log(screenString)
         let firstOperand = screenString[0];
         let secondOperand = screenString[2];
         let operator = screenString[1];
 
-        console.log(operate(operator, firstOperand, secondOperand));
+        let result = operate(operator, firstOperand, secondOperand);
+
+        screen.innerText = `${screen.innerText} = ${result}`;
 })
+
+clear.addEventListener('click', () => screen.innerText = " ")
