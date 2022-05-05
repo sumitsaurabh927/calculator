@@ -14,11 +14,18 @@ let nine = numbers[9];
 
 let screen = document.querySelector('.input');
 
+let add = document.querySelector('.add');
+let subtract = document.querySelector('.subtract');
+let multiply = document.querySelector('.multiply');
+let divide = document.querySelector('.divide');
+
+let equalTo = document.querySelector('.equal');
+
 // functions for four basic numberical operations
-let addition = (operandOne, operandTwo) => operandOne + operandTwo;
-let subtraction = (operandOne, operandTwo) => operandOne - operandTwo;
-let multiplication = (operandOne, operandTwo) => operandOne * operandTwo;
-let division = (operandOne, operandTwo) => operandOne / operandTwo;
+let addition = (operandOne, operandTwo) => Number(operandOne) + Number(operandTwo);
+let subtraction = (operandOne, operandTwo) => Number(operandOne) - Number(operandTwo);
+let multiplication = (operandOne, operandTwo) => Number(operandOne) * Number(operandTwo);
+let division = (operandOne, operandTwo) => Number(operandOne) / Number(operandTwo);
 
 // the operate function
 let operate = (operator, operandOne, operandTwo) => {
@@ -40,7 +47,7 @@ let operate = (operator, operandOne, operandTwo) => {
 let inputValue = screen.innerText;
 const populator = (clickVal) => {
         let clicked = clickVal.innerText;
-        inputValue = inputValue + clicked;
+        inputValue = `${inputValue}${clicked}`;
         // console.log(inputValue);
         screen.innerText = inputValue;
 }
@@ -55,5 +62,17 @@ seven.addEventListener('click', () => populator(seven));
 eight.addEventListener('click', () => populator(eight));
 nine.addEventListener('click', () => populator(nine));
 
+add.addEventListener('click', () => {
+        inputValue = `${inputValue}  ${add.innerText} `;
+        screen.innerText = `${inputValue}`;
+})
 
+equalTo.addEventListener('click', () => {
+        let screenString = screen.innerText.split(' ');
+        console.log(screenString)
+        let firstOperand = screenString[0];
+        let secondOperand = screenString[2];
+        let operator = screenString[1];
 
+        console.log(operate(operator, firstOperand, secondOperand));
+})
