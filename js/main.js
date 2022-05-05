@@ -23,6 +23,8 @@ let equalTo = document.querySelector('.equal');
 
 let clear = document.querySelector('.clear');
 
+let del = document.querySelector('.delete');
+
 // functions for four basic numberical operations
 let addition = (operandOne, operandTwo) => Number(operandOne) + Number(operandTwo);
 let subtraction = (operandOne, operandTwo) => Number(operandOne) - Number(operandTwo);
@@ -46,13 +48,28 @@ let operate = (operator, operandOne, operandTwo) => {
 }
 
 // populating screen on button press
+// let inputValue = screen.innerText;
 let inputValue = screen.innerText;
 const populator = (clickVal) => {
         let clicked = clickVal.innerText;
         inputValue = `${inputValue}${clicked}`;
-        // console.log(inputValue);
+        // console.log(clickVal);
         screen.innerText = inputValue;
 }
+
+
+clear.addEventListener('click', () => {
+        screen.innerText = " ";
+        inputValue = " ";
+});
+
+del.addEventListener('click', () => {
+        let stringToUpdate = screen.innerText.toString();
+        let updatedString = stringToUpdate.slice(0, -1);
+        screen.innerText = `${updatedString} `;
+        inputValue = updatedString;
+        // console.log(stringToUpdate, updatedString)
+});
 
 one.addEventListener('click', () => populator(one));
 two.addEventListener('click', () => populator(two));
@@ -92,4 +109,3 @@ equalTo.addEventListener('click', () => {
         screen.innerText = `${screen.innerText} = ${result}`;
 })
 
-clear.addEventListener('click', () => screen.innerText = " ")
