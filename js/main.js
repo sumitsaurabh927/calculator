@@ -11,6 +11,7 @@ let six = numbers[6];
 let seven = numbers[7];
 let eight = numbers[8];
 let nine = numbers[9];
+let dot = numbers[10];
 
 let screen = document.querySelector('.input');
 
@@ -80,6 +81,7 @@ six.addEventListener('click', () => populator(six));
 seven.addEventListener('click', () => populator(seven));
 eight.addEventListener('click', () => populator(eight));
 nine.addEventListener('click', () => populator(nine));
+dot.addEventListener('click', () => populator(dot));
 
 add.addEventListener('click', () => {
         inputValue = `${inputValue}  ${add.innerText} `;
