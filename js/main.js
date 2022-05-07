@@ -58,12 +58,13 @@ const populator = (clickVal) => {
         screen.innerText = inputValue;
 }
 
-
+// clear button behaviour
 clear.addEventListener('click', () => {
         screen.innerText = " ";
         inputValue = " ";
 });
 
+// backspace button behaviour
 del.addEventListener('click', () => {
         let stringToUpdate = screen.innerText.toString();
         let updatedString = stringToUpdate.slice(0, -1);
@@ -72,6 +73,7 @@ del.addEventListener('click', () => {
         // console.log(stringToUpdate, updatedString)
 });
 
+// running pupulator functin on button press
 one.addEventListener('click', () => populator(one));
 two.addEventListener('click', () => populator(two));
 three.addEventListener('click', () => populator(three));
@@ -83,9 +85,31 @@ eight.addEventListener('click', () => populator(eight));
 nine.addEventListener('click', () => populator(nine));
 dot.addEventListener('click', () => populator(dot));
 
+// what happens on pressing any of the four mathematical operator's button on calculator
+// just updating things 'on screen.' Actual calculation happens on pressing =
 add.addEventListener('click', () => {
         inputValue = `${inputValue}  ${add.innerText} `;
         screen.innerText = `${inputValue}`;
+
+        // testing for existence of more than one +
+        let plusCount = 0;
+        (screen.innerText.split('')).forEach(x => {
+                if (x === '+') {
+                        plusCount += 1;
+
+                        // what happens when there are more than one plus
+                        if (plusCount > 1) {
+                                console.log(screen.innerText.split('+'))
+
+                                // making addition work in console
+                                // console.log(Number(screen.innerText.split('+')[0]) + Number(screen.innerText.split('+')[1]))
+
+                                // trying to replicate it in calculator screen
+                                inputValue = `${Number(screen.innerText.split('+')[0]) + Number(screen.innerText.split('+')[1])} + `;
+                                screen.innerText = inputValue;
+                        }
+                }
+        });
 })
 subtract.addEventListener('click', () => {
         inputValue = `${inputValue}  ${subtract.innerText} `;
@@ -100,6 +124,7 @@ divide.addEventListener('click', () => {
         screen.innerText = `${inputValue}`;
 })
 
+// what happens on pressing =
 equalTo.addEventListener('click', () => {
         let screenString = screen.innerText.split(' ');
         let firstOperand = screenString[0];
