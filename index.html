@@ -9,38 +9,54 @@
     <title>Snazzy Calculator</title>
 
     <!-- external CSS link -->
-    <link rel="stylesheet" href="css/normalize.css" />
+    <!-- <link rel="stylesheet" href="css/normalize.css" /> -->
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Snazzy Calculator</h1>
-    </header>
+
     <main>
       <div class="calculatorBody">
-        <div class="input">00</div>
-        <button class="numZero">0</button>
-        <button class="numOne">1</button>
-        <button class="numTwo">2</button>
-        <button class="numThree">3</button>
-        <button class="numFour">4</button>
-        <button class="numFive">5</button>
-        <button class="numSix">6</button>
-        <button class="numSeven">7</button>
-        <button class="numEight">8</button>
-        <button class="numNine">9</button>
-        <button class="numDot">.</button>
-        <button class="clear">Clear</button>
-        <button class="delete">Del</button>
-        <button class="add">+</button>
-        <button class="subtract">-</button>
-        <button class="multiply">*</button>
-        <button class="divide">/</button>
-        <button class="equal">=</button>
-      </div>
-      <footer>
+        <!-- screen -->
+        <div class="screen"></div>
+        <!-- first div with clear and delete -->
+        <div class="rowOne">
+          <button class="clear">ESC</button>
+          <button class="delete">DEL</button>
+        </div>
+        <div class="rowTwo">
 
-      </footer>
+          <!-- second row with 7,8,9,/ -->
+          <button class="numSeven">7</button>
+          <button class="numEight">8</button>
+          <button class="numNine">9</button>
+          <button class="divide">/</button>
+        </div>
+        <div class="rowThree">
+
+          <!-- third row with 4,5,6,* -->
+          <button class="numFour">4</button>
+          <button class="numFive">5</button>
+          <button class="numSix">6</button>
+          <button class="multiply">*</button>
+        </div>
+        <div class="rowFour">
+
+          <!-- fourth row with 1,2,3,- -->
+          <button class="numOne">1</button>
+          <button class="numTwo">2</button>
+          <button class="numThree">3</button>
+          <button class="subtract">-</button>
+        </div>
+        <div class="rowFive">
+
+          <!-- fifth row with .,0,=,+ -->
+          <button class="numDot">.</button>
+          <button class="numZero">0</button>
+          <button class="equal">=</button>
+          <button class="add">+</button>
+        </div>
+      </div>
+      <footer></footer>
     </main>
     <script type="text/javascript" src="js/main.js"></script>
   </body>
