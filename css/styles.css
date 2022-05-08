@@ -178,7 +178,16 @@ body button:active{
 
 
 }
+@media screen and (max-width: 500px) {
+     body{
+          min-height: 40vh;
 
+          background-color: red;
+     }
+     .calculatorBody{
+          max-width: 390px;
+     }
+}
 
 /******************************************
 /* ANIMATION STYLES
