@@ -111,35 +111,39 @@ add.addEventListener('click', () => {
         // });
 })
 subtract.addEventListener('click', () => {
-        inputValue = `${inputValue}  ${subtract.innerText} `;
+        inputValue = `${inputValue} ${subtract.innerText} `;
         screen.innerText = `${inputValue}`;
 
+
+        // giving control to newly minted function called several operators check
+        severalOperatorsCheck(inputValue);
+
         // modifying function from addition
-        let minusCount = 0;
-        (screen.innerText.split('')).forEach(x => {
-                if (x === '-') {
-                        minusCount += 1;
+        // let minusCount = 0;
+        // (screen.innerText.split('')).forEach(x => {
+        //         if (x === '-') {
+        //                 minusCount += 1;
 
-                        // what happens when there are more than one plus
-                        if (minusCount > 1) {
-                                console.log(screen.innerText.split('-'))
+        //                 // what happens when there are more than one plus
+        //                 if (minusCount > 1) {
+        //                         console.log(screen.innerText.split('-'))
 
-                                // making addition work in console
-                                // console.log(Number(screen.innerText.split('-')[0]) - Number(screen.innerText.split('+')[1]))
+        //                         // making addition work in console
+        //                         // console.log(Number(screen.innerText.split('-')[0]) - Number(screen.innerText.split('+')[1]))
 
-                                // trying to replicate it in calculator screen
-                                inputValue = `${Number(screen.innerText.split('-')[0]) - Number(screen.innerText.split('-')[1])} - `;
-                                screen.innerText = inputValue;
-                        }
-                }
-        });
+        //                         // trying to replicate it in calculator screen
+        //                         inputValue = `${Number(screen.innerText.split('-')[0]) - Number(screen.innerText.split('-')[1])} - `;
+        //                         screen.innerText = inputValue;
+        //                 }
+        //         }
+        // });
 })
 multiply.addEventListener('click', () => {
-        inputValue = `${inputValue}  ${multiply.innerText} `;
+        inputValue = `${inputValue} ${multiply.innerText} `;
         screen.innerText = `${inputValue}`;
 })
 divide.addEventListener('click', () => {
-        inputValue = `${inputValue}  ${divide.innerText} `;
+        inputValue = `${inputValue} ${divide.innerText} `;
         screen.innerText = `${inputValue}`;
 })
 
@@ -163,45 +167,82 @@ equalTo.addEventListener('click', () => {
 
 // a function to check if there's a second operator and it there is, perform the first operation on first two operands and then on the next.
 // This is supposed to run on every click of +,-,*,/
-let plusCounter = 0, minusCounter = 0, multiplyCounter = 0, divideCounter = 0, temp = [], operandA = 0, operandB = 0;
+let plusCounter = 0, minusCounter = 0, multiplyCounter = 0, divideCounter = 0, temp = [], operandA = 0, operandB = 0, opCount = 0, sign = 0;
 
 const severalOperatorsCheck = (inputString) => {
         // split input into individual digits
         let inputStringArray = inputString.split('')
+        // outside for loop
+        // console.log('outside loop: ', inputStringArray)
 
         // run a check for any mathematical operator
         // the first time an operator is encountered, push everything to its left into a 'firsOperand' variable
         for (let i = 0; i < inputStringArray.length; i++) {
+                //
+                console.log('loop running')
                 //  console.log(inputStringArray)
                 if (inputStringArray[i] === '+') {
                         plusCounter += 1;
+                        opCount += 1;
                         // dry run of function for +
                         // what happens when there are more than one plus
-                        if (plusCounter > 1) {
+                        if (plusCounter > 1 && opCount > 1) {
                                 console.log(`**${inputString}**`)
                                 console.log(inputString.split(' '))
                                 operandA = Number(inputString.split(' ')[0]);
                                 operandB = Number(inputString.split(' ')[2]);
-
+                                sign = inputString.split(' ')[3];
+                                console.log('sign is: ', sign);
                                 // console.log(operandA, operandB);
 
                                 // let result = operate('+', operandA, operandB);
 
                                 let result = Number(operandA) + Number(operandB);
-                                inputValue = `${result} + `;
+                                inputValue = `${result} ${sign} `;
                                 screen.innerText = inputValue;
                                 console.log(`---${inputValue}---`);
 
                                 // resetting stuff
                                 plusCounter = 0;
+                                // opCount = 0;
                                 // inputString = inputValue;
                                 // temp = []
                                 // console.log(plusCounter);
 
                         }
 
-                } else if (i === '-') {
+                } else if (inputStringArray[i] === '-') {
+                        // announcement
+                        console.log("INSIDE MINUS TERRITORY")
                         minusCounter += 1;
+                        opCount += 1;
+
+                        // dry run of function for -
+                        // what happens when there are more than one minus
+                        if (minusCounter > 1 && opCount > 1) {
+                                console.log(`**${inputString}**`)
+                                console.log(inputString.split(' '))
+                                operandA = Number(inputString.split(' ')[0]);
+                                operandB = Number(inputString.split(' ')[2]);
+                                sign = inputString.split(' ')[3];
+                                console.log(sign)
+                                // console.log(operandA, operandB);
+
+                                // let result = operate('+', operandA, operandB);
+
+                                let result = Number(operandA) - Number(operandB);
+                                inputValue = `${result} ${sign} `;
+                                screen.innerText = inputValue;
+                                console.log(`---${inputValue}---`);
+
+                                // resetting stuff
+                                minusCounter = 0;
+                                // opCount = 0;
+                                // inputString = inputValue;
+                                // temp = []
+                                // console.log(plusCounter);
+
+                        }
 
                         // dry run for minus
                         // what happens when there are more than one minus
@@ -210,9 +251,9 @@ const severalOperatorsCheck = (inputString) => {
                         //         inputValue = `${Number(screen.innerText.split('-')[0]) - Number(screen.innerText.split('-')[1])} - `;
                         //         screen.innerText = inputValue;
                         // }
-                } else if (i === '*') {
+                } else if (inputStringArray[i] === '*') {
                         multiplyCounter += 1;
-                } else if (i === '/') {
+                } else if (inputStringArray[i] === '/') {
                         divideCounter += 1;
                 } else {
                         // let value = Number(inputString.split(' ')[0]);
