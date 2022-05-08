@@ -183,6 +183,19 @@ body button:active {
   .calculatorBody {
     max-width: 390px;
   }
+  body > main > .calculatorBody button {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+  body > main > .calculatorBody > .rowThree > button {
+    /* background-color: rgb(53, 11, 157); */
+    font-size: 1rem;
+    padding: 1rem;
+    min-height: 76px;
+  }
+  body > main > .calculatorBody > .rowThree > .multiply {
+     font-size: 1.4rem;
+   }
 }
 
 /******************************************
