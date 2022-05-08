@@ -194,8 +194,8 @@ body button:active {
     min-height: 76px;
   }
   body > main > .calculatorBody > .rowThree > .multiply {
-     font-size: 1.4rem;
-   }
+    font-size: 1.4rem;
+  }
 }
 
 /******************************************
