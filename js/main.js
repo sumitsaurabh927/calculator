@@ -268,3 +268,4 @@ const severalOperatorsCheck = (inputString) => {
 
 
 console.log('hi there')
+console.log('hi there again')
