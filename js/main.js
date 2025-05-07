@@ -265,3 +265,6 @@ const severalOperatorsCheck = (inputString) => {
                 }
         }
 };
+
+
+console.log('hi there')
